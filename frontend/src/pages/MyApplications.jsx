@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import API_BASE_URL from '../api'
 
 function MyApplications() {
   const [applications, setApplications] = useState([])
@@ -27,7 +28,7 @@ function MyApplications() {
     }
 
     fetch(
-      `http://127.0.0.1:5000/api/applications/student/${user.student_id}`
+      `${API_BASE_URL}/api/applications/student/${user.student_id}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -65,21 +66,23 @@ function MyApplications() {
             >
               <h2>{application.title}</h2>
 
-             <p>
-  <strong>Status:</strong>{' '}
-  <span className={`status-badge status-${application.status.toLowerCase()}`}>
-    {application.status}
-  </span>
-</p>
+              <p>
+                <strong>Status:</strong>{' '}
+                <span
+                  className={`status-badge status-${application.status.toLowerCase()}`}
+                >
+                  {application.status}
+                </span>
+              </p>
 
               <p>
-  <strong>Applied:</strong>{' '}
-  {new Date(
-    application.applied_at
-  ).toLocaleDateString('en-IN', {
-    timeZone: 'UTC',
-  })}
-</p>
+                <strong>Applied:</strong>{' '}
+                {new Date(
+                  application.applied_at
+                ).toLocaleDateString('en-IN', {
+                  timeZone: 'UTC',
+                })}
+              </p>
             </div>
           ))}
         </div>

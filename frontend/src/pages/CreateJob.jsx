@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import API_BASE_URL from "../api";
 
 function CreateJob() {
   const [title, setTitle] = useState('')
@@ -17,7 +18,7 @@ function CreateJob() {
 
   // Load branches
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/api/branches')
+   fetch(`${API_BASE_URL}/api/branches`)
       .then((response) => response.json())
       .then((data) => {
         setBranches(data)
@@ -29,7 +30,7 @@ function CreateJob() {
 
   // Load skills
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/api/skills')
+    fetch(`${API_BASE_URL}/api/skills`)
       .then((response) => response.json())
       .then((data) => {
         setSkills(data)
@@ -100,7 +101,7 @@ function CreateJob() {
     }
 
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/jobs', {
+     const response = await fetch(`${API_BASE_URL}/api/jobs`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

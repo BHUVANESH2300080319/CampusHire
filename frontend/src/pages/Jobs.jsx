@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import API_BASE_URL from '../api'
 
 function Jobs() {
   const [jobs, setJobs] = useState([])
@@ -32,7 +33,7 @@ function Jobs() {
 
   // Load jobs
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/api/jobs')
+    fetch(`${API_BASE_URL}/api/jobs`)
       .then((response) => response.json())
       .then((data) => {
         setJobs(data)
@@ -50,7 +51,7 @@ function Jobs() {
     }
 
     fetch(
-      `http://127.0.0.1:5000/api/applications/student/${user.student_id}`
+      `${API_BASE_URL}/api/applications/student/${user.student_id}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -75,7 +76,7 @@ function Jobs() {
 
     jobs.forEach((job) => {
       fetch(
-        `http://127.0.0.1:5000/api/jobs/${job.id}/eligibility/${user.student_id}`
+        `${API_BASE_URL}/api/jobs/${job.id}/eligibility/${user.student_id}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -104,7 +105,7 @@ function Jobs() {
 
     jobs.forEach((job) => {
       fetch(
-        `http://127.0.0.1:5000/api/jobs/${job.id}/skill-match/${user.student_id}`
+        `${API_BASE_URL}/api/jobs/${job.id}/skill-match/${user.student_id}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -149,7 +150,7 @@ function Jobs() {
 
     try {
       const response = await fetch(
-        'http://127.0.0.1:5000/api/applications',
+        `${API_BASE_URL}/api/applications`,
         {
           method: 'POST',
           headers: {

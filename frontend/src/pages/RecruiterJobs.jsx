@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import API_BASE_URL from '../api'
 
 function RecruiterJobs() {
   const [jobs, setJobs] = useState([])
@@ -23,7 +24,7 @@ function RecruiterJobs() {
     }
 
     fetch(
-      `http://127.0.0.1:5000/api/jobs/recruiter/${user.recruiter_id}`
+      `${API_BASE_URL}/api/jobs/recruiter/${user.recruiter_id}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -66,10 +67,11 @@ function RecruiterJobs() {
                 <span>🎓 CGPA {job.minimum_cgpa}+</span>
                 <span>📅 Batch {job.graduation_year}</span>
               </div>
+
               <p>
-  <strong>Required Skills:</strong>{' '}
-  {job.required_skills || 'None'}
-</p>
+                <strong>Required Skills:</strong>{' '}
+                {job.required_skills || 'None'}
+              </p>
             </div>
           ))}
         </div>

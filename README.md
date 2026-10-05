@@ -261,7 +261,7 @@ Start the Flask server:
 python app.py
 
 The backend runs on:
-http://127.0.0.1:5000
+https://campushire-nung.onrender.com
 
 3. Frontend Setup
 Open another terminal and navigate to:

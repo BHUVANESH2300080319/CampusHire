@@ -594,7 +594,7 @@ main > h1 {
   border-radius: 8px;
 }
 
-.branch-option {
+.form-group .branch-option {
   display: flex;
   align-items: center;
   gap: 8px;

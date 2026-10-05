@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import API_BASE_URL from '../api'
 
 function RecruiterApplications() {
   const [applications, setApplications] = useState([])
@@ -32,7 +33,7 @@ function RecruiterApplications() {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/api/applications/recruiter/${user.recruiter_id}`
+        `${API_BASE_URL}/api/applications/recruiter/${user.recruiter_id}`
       )
 
       const data = await response.json()
@@ -54,7 +55,7 @@ function RecruiterApplications() {
   async function handleStatusChange(applicationId, newStatus) {
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/api/applications/${applicationId}/status`,
+        `${API_BASE_URL}/api/applications/${applicationId}/status`,
         {
           method: 'PUT',
           headers: {
