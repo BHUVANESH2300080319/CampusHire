@@ -17,7 +17,8 @@ def get_db_connection():
         port=int(os.getenv("MYSQL_PORT", "3306")),
         user=os.getenv("MYSQL_USER", "root"),
         password=os.getenv("MYSQL_PASSWORD"),
-        database=os.getenv("MYSQL_DATABASE", "campushire")
+        database=os.getenv("MYSQL_DATABASE", "campushire"),
+        ssl_disabled=os.getenv("MYSQL_SSL_DISABLED", "true").lower() == "true"
     )
     return connection
 
